@@ -1,0 +1,114 @@
+% write in utf8
+\usepackage[T1]{fontenc}
+
+% sensitive to language
+\usepackage{ifthen}
+\ifthenelse{\equal{\thesislanguage}{german}}{\usepackage[ngerman]{babel}}{}
+
+% make colors aviable
+\usepackage[usenames,dvipsnames,svgnames]{xcolor}
+
+% a lot of font stuff
+\usepackage[osf,sc]{mathpazo}
+\linespread{1.05}
+\usepackage{microtype}
+\usepackage[oldstylenums]{kpfonts}
+\renewcommand*{\ttdefault}{cmtt}
+
+% support monochrome
+\ifthenelse{\equal{\thesismonochrome}{true}}%
+	{\definecolor[named]{NavyBlue}{cmyk}{0,0,0,1}}%
+	{\definecolor[named]{NavyBlue}{cmyk}{1,.7,0,0}}
+
+% draw pretty titles
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]%
+	{\bfseries\Large\scshape}%
+	{\thechapter}%
+	{.5em}%
+	{\huge\scshape\color{NavyBlue}}
+\titleformat{\section}[hang]%
+	{\bfseries\scshape}%
+	{\thesection}%
+	{.5em}%
+	{\scshape\Large\color{NavyBlue}}
+\titleformat{\subsection}[hang]%
+	{\normalfont\scshape}%
+	{\thesubsection}%
+	{.5em}%
+	{\scshape\large\color{NavyBlue}}
+\titleformat{\subsubsection}[hang]%
+	{\normalfont\scshape}%
+	{\thesubsubsection}%
+	{.5em}%
+	{\scshape\color{NavyBlue}}
+\renewcommand*{\chapterheadstartvskip}{\vspace*{1em}}
+\renewcommand*{\chapterheadendvskip}{\vspace*{-0in}}
+
+% change TOC accordingly
+\setkomafont{chapterentry}{\normalfont\bfseries\scshape}
+
+
+% figures
+\usepackage{subfigure}
+
+% textflow
+\textheight650pt
+
+% get lists right
+\usepackage{enumitem}
+\setlist{itemsep=-5pt}
+\newcommand{\localtextbulletone}{\textcolor{NavyBlue}{{\tiny$\blacksquare$} }}
+\renewcommand{\labelitemi}{\localtextbulletone}
+\setlist[enumerate]{label=\textbf{\color{NavyBlue}{\arabic*.}}}
+\setlist[description]{font=\normalfont\scshape\bfseries\textcolor{NavyBlue},itemsep=2pt}
+
+% captions, figures & tables
+\setkomafont{captionlabel}{\normalfont\scshape\bfseries\textcolor{NavyBlue}}
+\setkomafont{caption}{\normalfont\itshape}
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+% PDF stuff
+\usepackage[pdftex]{graphicx}
+\usepackage[pdftex,
+	bookmarks=true,
+	colorlinks=true,
+	linkcolor=black,
+	urlcolor=NavyBlue,
+	citecolor=NavyBlue,
+	pdftitle={\thesistitle},
+	pdfauthor={\thesisauthor},
+	bookmarksopen=false,
+	pdfpagemode=UseOutlines
+	]{hyperref}
+\usepackage{url}
+
+% headers
+\usepackage[automark]{scrpage2}
+\pagestyle{scrheadings}
+\ifthenelse{\equal{\thesisprintingstyle}{twoside}}{
+	\lehead{\scshape\headmark}
+	\lohead{}
+	\rehead{}
+	\rohead{\scshape\headmark}
+	\lefoot{\scshape\pagemark}
+	\rofoot{\scshape\pagemark}
+	\chead{}
+	\cfoot{}
+}{
+	\lehead{}
+	\lohead{}
+	\rohead{\scshape\headmark}
+	\rehead{\scshape\headmark}
+	\lefoot{}
+	\lofoot{}
+	\rofoot{\scshape\pagemark}
+	\refoot{\scshape\pagemark}
+	\chead{}
+	\cfoot{}
+}
+
+\usepackage{setspace}
+

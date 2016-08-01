@@ -1,0 +1,43 @@
+\begin{titlepage}
+	\vspace*{-5em}
+	\begin{center}
+		\includegraphics[width=0.4\textwidth]{tpl/unilogo.pdf}
+		~\\
+		\vspace*{10em}
+		\begin{minipage}{.8\textwidth}
+			\centering
+			\begin{spacing}{1.3}
+				{\huge\scshape\color{NavyBlue}\thesistitle}
+			\end{spacing}
+		\end{minipage}
+		~\\
+		\vspace*{1em}		
+		\begin{minipage}{.6\textwidth}
+			\centering
+			{\Large\scshape\thesissubtitle}
+		\end{minipage}
+		~\\
+		\vspace*{20em}
+		{\Large\scshape\bfseries\thesisauthor}
+		~\\
+		\vspace*{2em}
+		\ifthenelse{\equal{\thesislanguage}{german}}{%
+		\Large\scshape
+			\ifthenelse{\equal{\thesistype}{master}}{Masterarbeit}{}%
+			\ifthenelse{\equal{\thesistype}{bachelor}}{Bachelorarbeit}{}%
+			\ifthenelse{\equal{\thesistype}{seminar}}{Seminarausarbeitung}{}%
+			\ifthenelse{\equal{\thesistype}{report}}{Laborprotokoll}{}%
+		\normalsize\normalfont
+	}{% english
+		\Large\scshape
+		\ifthenelse{\equal{\thesistype}{master}}{Master Thesis}{}%
+		\ifthenelse{\equal{\thesistype}{bachelor}}{Bachelor Thesis}{}%
+		\ifthenelse{\equal{\thesistype}{seminar}}{Seminar Paper}{}%
+		\ifthenelse{\equal{\thesistype}{report}}{Lab Report}{}%
+		\normalsize\normalfont
+	}%		
+		\vfill
+		\thesissupervisor~\\
+		\thesisaffiliation		
+	\end{center}
+\end{titlepage}

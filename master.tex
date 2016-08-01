@@ -1,0 +1,64 @@
+\documentclass[11pt,a4paper,openright,bibtotocnumbered]{scrreprt}
+\usepackage[utf8]{inputenc}
+\input{cfg.tex}
+\input{tpl/pkg.tex}
+
+\begin{document}
+\sloppy
+\KOMAoptions{twoside = false}
+\input{tpl/titlepage.tex}
+
+\ifthenelse{\equal{\thesisprintingstyle}{twoside}}{
+	\KOMAoptions{twoside = true}
+}{}
+\pagestyle{scrheadings}
+\setcounter{page}{7}
+\pagenumbering{gobble}
+\pagenumbering{roman}
+
+\ifthenelse{\equal{\thesisthankyou}{true}}{
+	\cleardoublepage
+	\chapter*{\ifthenelse{\equal{\thesislanguage}{german}}%
+		{Danksagung}%
+		{Acknowledgement}}
+	\input{chapter/thanks.tex}}
+	\cleardoublepage
+{}
+
+\input{tpl/declaration.tex}
+\cleardoublepage
+
+% Listings of contents
+\addtocontents{toc}{\vskip -2em}
+\addtocontents{lof}{\vskip -2em}
+\addtocontents{lot}{\vskip -2em}
+
+\cleardoublepage
+\chapter*{\ifthenelse{\equal{\thesislanguage}{german}}%
+	{Zusammenfassung}%
+	{Abstract}}
+\input{chapter/abstract.tex}
+\clearpage
+%\vspace*{\fill}
+%\thispagestyle{empty}
+
+\begingroup
+\let\clearpage\relax
+\listoffigures
+\listoftables
+\endgroup
+
+
+\tableofcontents
+%\thispagestyle{empty}
+\cleardoublepage
+
+\pagenumbering{arabic}
+
+
+%\setcounter{page}{1}
+
+\input{chapter/index.tex}
+\bibliographystyle{alphadin}
+\bibliography{bibliography}
+\end{document}
